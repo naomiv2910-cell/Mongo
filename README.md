@@ -1,108 +1,111 @@
-# Gestión de Estudiantes con MongoDB Atlas y Python
+# Student Management with MongoDB Atlas and Python
 
-Este proyecto es una aplicación de consola en Python que permite gestionar una base de datos de estudiantes almacenada en MongoDB Atlas. Utiliza la librería `pymongo` para interactuar con la base de datos, ofreciendo funcionalidades CRUD (Crear, Leer, Actualizar, Eliminar) a través de un menú interactivo.
+This project is a Python console application that allows you to manage a student database stored in MongoDB Atlas. It uses the `pymongo` library to interact with the database, offering CRUD (Create, Read, Update, Delete) functionality through an interactive menu.
 
-## Características
+## Features
 
-*   **Conexión Segura**: Se conecta a una base de datos en la nube de MongoDB Atlas.
-*   **Insertar Estudiantes**: Permite añadir nuevos registros de estudiantes con nombre, edad y carrera.
-*   **Listar Estudiantes**: Muestra todos los estudiantes almacenados en la base de datos.
-*   **Actualizar Edad**: Modifica la edad de un estudiante existente.
-*   **Eliminar Estudiantes**: Borra registros de estudiantes de la base de datos.
-*   **Menú Interactivo**: Interfaz de usuario simple basada en consola para facilitar la interacción.
+* **Secure Connection**: Connects to a cloud-based MongoDB Atlas database.
+* **Add Students**: Allows adding new student records with name, age, and major.
+* **List Students**: Displays all students stored in the database.
+* **Update Age**: Modifies the age of an existing student.
+* **Delete Students**: Removes student records from the database.
+* **Interactive Menu**: Simple console-based user interface for easy interaction.
 
-## Tecnologías Utilizadas
+## Technologies Used
 
-*   **Python 3.x**
-*   **PyMongo**: Driver oficial de MongoDB para Python.
-*   **MongoDB Atlas**: Servicio de base de datos en la nube.
+* **Python 3.x**
+* **PyMongo**: Official MongoDB driver for Python.
+* **MongoDB Atlas**: Cloud database service.
 
-## Configuración del Proyecto
+## Project Setup
 
-Sigue estos pasos para poner en marcha el proyecto en tu entorno local:
+Follow these steps to run the project in your local environment:
 
-### 1. Clona el Repositorio (o descarga el notebook)
+### 1. Clone the Repository (or download the notebook)
 
-Si estás usando este código en un repositorio de GitHub, clónalo:
+If you're using this code from a GitHub repository, clone it:
 
 ```bash
-git clone <URL_DE_TU_REPOSITORIO>
-cd <NOMBRE_DE_TU_REPOSITORIO>
+git clone <YOUR_REPOSITORY_URL>
+cd <YOUR_REPOSITORY_NAME>
 ```
 
-Si estás usando Google Colab, simplemente ejecuta las celdas en el orden en que aparecen.
+If you're using Google Colab, simply run the cells in order.
 
-### 2. Instala las Dependencias
+### 2. Install Dependencies
 
-Asegúrate de tener `pymongo` instalado. Puedes instalarlo usando `pip`:
+Make sure you have `pymongo` installed. You can install it using `pip`:
 
 ```bash
 pip install --upgrade pymongo
 ```
 
-### 3. Configura tu Cadena de Conexión de MongoDB Atlas
+### 3. Configure Your MongoDB Atlas Connection String
 
-Necesitarás una cuenta de MongoDB Atlas y una base de datos configurada. Una vez que tengas tu cluster, obtén tu cadena de conexión (URI de conexión):
+You’ll need a MongoDB Atlas account and a configured database. Once your cluster is ready, get your connection string (URI):
 
-1.  Inicia sesión en tu cuenta de [MongoDB Atlas](https://cloud.mongodb.com/).
-2.  Navega a tu Cluster.
-3.  Haz clic en 'Connect'.
-4.  Selecciona 'Connect your application'.
-5.  Copia la cadena de conexión. Asegúrate de reemplazar `<username>` y `<password>` con tus credenciales reales, y opcionalmente `<dbname>` con el nombre de tu base de datos.
+1. Log in to your MongoDB Atlas account.
+2. Go to your cluster.
+3. Click on **Connect**.
+4. Select **Connect your application**.
+5. Copy the connection string. Make sure to replace `<username>` and `<password>` with your actual credentials, and optionally `<dbname>` with your database name.
 
-**Actualiza el código**: En la celda donde se define `cliente = MongoClient(...)`, reemplaza la cadena de conexión existente con la tuya:
+**Update the code**: In the cell where `cliente = MongoClient(...)` is defined, replace the existing connection string with yours:
 
 ```python
 cliente = MongoClient("mongodb+srv://<username>:<password>@cluster0.kgm2etf.mongodb.net/?retryWrites=true&w=majority")
 ```
 
-**¡Importante!** Asegúrate de que el usuario de la base de datos que usas tenga los permisos adecuados (lectura y escritura) sobre la base de datos y colecciones que vas a manipular (`BD_CursoMongo` y `Estudiantes` en este caso).
+**Important!** Make sure the database user you’re using has the proper permissions (read and write) for the database and collections you’ll be working with (`BD_CursoMongo` and `Estudiantes` in this case).
 
-## Uso
+## Usage
 
-Una vez configurado y con las dependencias instaladas, ejecuta el notebook (o el script de Python si lo has extraído). El programa presentará un menú interactivo en la consola:
+Once everything is set up and dependencies are installed, run the notebook (or Python script). The program will display an interactive menu in the console:
 
 ```
---- MENÚ DE ESTUDIANTES ---
-1. Insertar estudiante
-2. Listar estudiantes
-3. Actualizar edad de un estudiante
-4. Eliminar estudiante
-5. Salir
-Seleccione una opción: 
+--- STUDENT MENU ---
+1. Add student
+2. List students
+3. Update student age
+4. Delete student
+5. Exit
+Select an option:
 ```
 
-Simplemente ingresa el número de la opción que deseas realizar y sigue las instrucciones.
+Simply enter the number of the option you want and follow the instructions.
 
-### Ejemplo de Interacción
+### Example Interaction
 
-1.  Selecciona `1` para insertar un estudiante.
-    *   `Ingrese el nombre del estudiante: Kevin Luengas`
-    *   `Ingrese la edad del estudiante: 20`
-    *   `Ingrese la carrera del estudiante: Ciencia de datos`
-    *   `Estudiante Kevin Luengas insertado.`
+1. Select `1` to add a student.
 
-2.  Selecciona `2` para listar estudiantes.
-    *   `Listado de estudiantes:`
-    *   `{'_id': ObjectId('...'), 'nombre': 'Kevin Luengas', 'edad': 20, 'carrera': 'Ciencia de datos'}`
+   * `Enter the student's name: Kevin Luengas`
+   * `Enter the student's age: 20`
+   * `Enter the student's major: Data Science`
+   * `Student Kevin Luengas added.`
 
-3.  Selecciona `5` para salir del programa.
-    *   `Saliendo del programa.`
+2. Select `2` to list students.
 
-## Estructura del Código
+   * `Student list:`
+   * `{'_id': ObjectId('...'), 'name': 'Kevin Luengas', 'age': 20, 'major': 'Data Science'}`
 
-El código está organizado en funciones para cada operación CRUD:
+3. Select `5` to exit the program.
 
-*   `insertar_estudiante(nombre, edad, carrera)`: Añade un nuevo estudiante.
-*   `listar_estudiantes()`: Recupera y muestra todos los estudiantes.
-*   `actualizar_edad(nombre, nueva_edad)`: Actualiza la edad de un estudiante por su nombre.
-*   `eliminar_estudiante(nombre)`: Elimina un estudiante por su nombre.
-*   `menu_estudiantes()`: La función principal que muestra el menú y maneja las interacciones del usuario.
+   * `Exiting the program.`
 
-## Contribuciones
+## Code Structure
 
-Las contribuciones son bienvenidas. Si encuentras un error o tienes una sugerencia de mejora, por favor, abre un 'issue' o envía un 'pull request'.
+The code is organized into functions for each CRUD operation:
 
-## Licencia
+* `insertar_estudiante(nombre, edad, carrera)`: Adds a new student.
+* `listar_estudiantes()`: Retrieves and displays all students.
+* `actualizar_edad(nombre, nueva_edad)`: Updates a student’s age by name.
+* `eliminar_estudiante(nombre)`: Deletes a student by name.
+* `menu_estudiantes()`: Main function that displays the menu and handles user interaction.
 
-Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+## Contributions
+
+Contributions are welcome. If you find a bug or have a suggestion for improvement, feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
